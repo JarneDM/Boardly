@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@utility todo {
+  @apply bg-green-200;
+}
+
+@utility in-progress {
+  @apply bg-yellow-200;
+}
+
+@utility testing {
+  @apply bg-purple-200;
+}
+
+@utility done {
+  @apply bg-blue-200;
+}

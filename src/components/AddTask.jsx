@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { db } from "../db.js";
 
 function AddTask() {
-  const [title, setTitle] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [status, setStatus] = React.useState("Todo");
-  const [labels, setLabels] = React.useState([]);
-  const [showOverlay, setShowOverlay] = React.useState(false); // 👈 controls overlay visibility
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("Todo");
+  const [labels, setLabels] = useState([]);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const defaultLabels = ["Urgent", "Low Priority", "Bug", "Feature", "School", "Personal"];
-  const defaultStatuses = ["ToDo", "In Progress", "Done"];
+  const defaultStatuses = ["Todo", "In Progress", "Testing", "Done"];
 
   const handleAddTask = async () => {
     try {

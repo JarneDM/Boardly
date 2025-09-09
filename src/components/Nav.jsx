@@ -5,15 +5,17 @@
 
 import React from "react";
 import AddTask from "./AddTask";
+import Projects from "./Projects";
 
 function Nav() {
   return (
     <>
       <div className="w-full flex items-center justify-between p-4 bg-blue-500">
         <h2 className="text-white font-bold text-xl">Boardly</h2>
+        <Projects />
         <div className="w-full max-w-md flex items-center">
           <input className="text-white w-full border-1 p-2 rounded-xl" placeholder="Search..." type="text" />
-          <button className="ml-2 px-3 py-2 flex items-center justify-center bg-blue-600 text-white rounded-3xl text-sm cursor-pointer">
+          <button className="ml-2 px-3 py-2 flex items-center justify-center bg-blue-600 text-white rounded-lg text-sm cursor-pointer">
             Search
           </button>
         </div>
