@@ -6,13 +6,20 @@
 > - Tailwind CSS
 > - Dexie.js
 
+### this is a project where i am learning tailwind css and some more react skills
+
 #### Todo
 
-- add feature for adding project
+- filter tasks on project
+- fix styling
 - style task cards
-- render projects in dropdown menu nav bar
 - add filtering
 - add background
 - add feature for adding labels
 - add feature deleting task, labels, projects
 - add relations for projects and tasks
+
+#### done
+
+- render projects in dropdown menu nav bar
+- add feature for adding project

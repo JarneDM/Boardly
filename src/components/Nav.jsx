@@ -6,6 +6,7 @@
 import React from "react";
 import AddTask from "./AddTask";
 import Projects from "./Projects";
+import AddProject from "./AddProject";
 
 function Nav() {
   return (
@@ -21,7 +22,7 @@ function Nav() {
         </div>
         {/* button div */}
         <div className="flex items-center">
-          <button className="cursor-pointer ml-2 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Add Project</button>
+          <AddProject />
           <button className="cursor-pointer ml-2 p-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Add Label</button>
           <AddTask />
         </div>

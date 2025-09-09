@@ -1,19 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db.js";
+import { Listbox } from "@headlessui/react";
+import { Check, ChevronDown } from "lucide-react";
 
 function Projects() {
   const projects = useLiveQuery(() => db.projects.toArray(), []);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <div>
-      <select name="projects" id="projects" className="border p-2 rounded w-full">
-        {projects?.map((project) => (
-          <option key={project.id} value={project.id}>
-            {project.name}
-          </option>
-        ))}
-      </select>
+    <div className="w-50 max-w-sm">
+      <Listbox value={selectedProject} onChange={setSelectedProject}>
+        <div className="relative">
+          {/* so this is the deafult value (placeholder) or selected project, also the select element in html */}
+          <Listbox.Button className="flex w-full items-center justify-between rounded-xl border border-gray-600 bg-blue-800 px-3 py-2 text-white shadow-sm focus:outline-none focus:ring focus:ring-blue-500/50 transition">
+            {selectedProject ? selectedProject.name : "Select a project"}
+            <ChevronDown className="h-4 w-4 opacity-70" /> {/* this is the down arrow icon */}
+          </Listbox.Button>
+
+          {/* then this is the list with the options to choose from */}
+          {/* Listbox.Option is the option element of just plain html yk, that goes inside of Listbox.Options */}
+          {projects && (
+            <Listbox.Options className="absolute z-10 mt-2 w-full rounded-xl bg-gray-900 shadow-lg ring-1 ring-black/10 focus:outline-none">
+              {projects.map((project) => (
+                <Listbox.Option
+                  key={project.id}
+                  value={project}
+                  className={({ active }) =>
+                    `cursor-pointer select-none rounded-lg px-3 py-2 ${active ? "bg-blue-600 text-white" : "text-gray-200"}`
+                  }
+                >
+                  {({ selected }) => (
+                    <div className="flex items-center justify-between">
+                      <span>{project.name}</span>
+                      {selected && <Check className="h-4 w-4 text-green-400" />}{" "}
+                      {/* Check is an icon that appears to see wich one is selected*/}
+                    </div>
+                  )}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          )}
+        </div>
+      </Listbox>
     </div>
   );
 }
