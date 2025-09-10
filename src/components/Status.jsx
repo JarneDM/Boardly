@@ -8,11 +8,11 @@ const statusClasses = {
   Done: "done",
 };
 
-function Status({ status }) {
+function Status({ status, selectedProject }) {
   return (
     <div className="mx-5 p-2 h-auto rounded-md min-h-[200px] flex flex-col items-center">
       <h3 className={`font-bold mb-2 px-3 py-1 rounded-xl w-full flex justify-center ${statusClasses[status]}`}>{status}</h3>
-      <TaskCards status={status} />
+      <TaskCards status={status} selectedProject={selectedProject?.id} />
     </div>
   );
 }

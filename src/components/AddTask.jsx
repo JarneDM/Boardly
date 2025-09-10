@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { db } from "../db.js";
+import { useLiveQuery } from "dexie-react-hooks";
 
 function AddTask() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [projectId, setProjectId] = useState(null);
   const [status, setStatus] = useState("Todo");
   const [labels, setLabels] = useState([]);
   const [showOverlay, setShowOverlay] = useState(false);
 
   const defaultLabels = ["Urgent", "Low Priority", "Bug", "Feature", "School", "Personal"];
   const defaultStatuses = ["Todo", "In Progress", "Testing", "Done"];
+
+  const projects = useLiveQuery(() => db.projects.toArray(), []);
 
   const handleAddTask = async () => {
     try {
@@ -18,11 +22,13 @@ function AddTask() {
         description,
         status,
         labels,
+        projectId,
         createdAt: new Date(),
       });
 
       setTitle("");
       setDescription("");
+      setProjectId(null);
       setStatus("Todo");
       setLabels([]);
       setShowOverlay(false);
@@ -57,6 +63,15 @@ function AddTask() {
               placeholder="Description"
               className="border p-2 rounded w-full"
             />
+
+            <select onChange={(e) => setProjectId(e.target.value)} name="projects" id="projects">
+              <option value="select-project">Select a project</option>
+              {projects.map((project) => (
+                <option value={project.id} key={project.id}>
+                  {project.name}
+                </option>
+              ))}
+            </select>
 
             <select value={status} onChange={(e) => setStatus(e.target.value)} className="border p-2 rounded w-full">
               {defaultStatuses.map((status) => (

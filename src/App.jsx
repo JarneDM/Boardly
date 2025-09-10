@@ -1,13 +1,15 @@
 import "./App.css";
 import Board from "./components/Board";
 import Nav from "./components/Nav";
-// import TaskCards from "./components/TaskCards";
+import { useState } from "react";
 
 function App() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   return (
     <>
-      <Nav />
-      <Board />
+      <Nav selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
+      <Board selectedProject={selectedProject} />
     </>
   );
 }
