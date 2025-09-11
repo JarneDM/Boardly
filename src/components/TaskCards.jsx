@@ -2,7 +2,7 @@ import React from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db.js";
 
-function TaskCards({ status, selectedProject }) {
+function TaskCards({ status, selectedProject, search }) {
   const tasks = useLiveQuery(() => {
     if (!status) return [];
 
@@ -20,12 +20,21 @@ function TaskCards({ status, selectedProject }) {
 
   if (!tasks) return <p>Loading...</p>;
 
+  const q = (search || "").toLowerCase().trim();
+  const filtered = q
+    ? tasks.filter((t) => {
+        const hay =
+          `${t.title ?? ""} ${t.description ?? ""} ${(t.labels ?? []).join(" ")}`.toLowerCase();
+        return hay.includes(q);
+      })
+    : tasks;
+
   return (
     <div className="space-y-2 w-full">
-      {tasks.length === 0 ? (
+      {filtered.length === 0 ? (
         <p>No tasks</p>
       ) : (
-        tasks.map((task) => (
+        filtered.map((task) => (
           <div key={task.id} className="p-2 bg-white shadow rounded border">
             <h4 className="font-semibold">{task.title}</h4>
             <p>

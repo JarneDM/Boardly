@@ -7,12 +7,12 @@ import TaskCards from "./TaskCards.jsx";
 
 function Projects({ selectedProject, setSelectedProject }) {
   const projects = useLiveQuery(() => db.projects.toArray(), []);
-  // const [selectedProject, setSelectedProject] = useState(null);
+
 
   return (
     <div className="w-50 max-w-sm">
       <Listbox value={selectedProject} onChange={setSelectedProject}>
-        {console.log(selectedProject)}
+
 
         <div className="relative">
           {/* so this is the deafult value (placeholder) or selected project, also the select element in html */}
