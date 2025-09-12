@@ -39,10 +39,7 @@ function AddTask() {
 
   return (
     <>
-      <button
-        onClick={() => setShowOverlay(true)}
-        className="cursor-pointer ml-2 p-2 bg-green-500 text-white rounded-md hover:bg-green-600"
-      >
+      <button onClick={() => setShowOverlay(true)} className="cursor-pointer ml-2 p-2 bg-white text-blue-500 rounded-md hover:bg-gray-200">
         Add Task
       </button>
 

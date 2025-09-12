@@ -10,7 +10,6 @@
 
 #### Todo
 
-- add data to db when rendering boardly if db is empty
 - choose first project when rendering boardly
 - render labels from db instead of hard coded
 - fix styling
@@ -25,3 +24,4 @@
 - add feature for adding project
 - filter tasks on project
 - add filtering
+- add data to db when rendering boardly if db is empty

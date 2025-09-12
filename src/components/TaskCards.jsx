@@ -23,8 +23,7 @@ function TaskCards({ status, selectedProject, search }) {
   const q = (search || "").toLowerCase().trim();
   const filtered = q
     ? tasks.filter((t) => {
-        const hay =
-          `${t.title ?? ""} ${t.description ?? ""} ${(t.labels ?? []).join(" ")}`.toLowerCase();
+        const hay = `${t.title ?? ""} ${t.description ?? ""} ${(t.labels ?? []).join(" ")}`.toLowerCase();
         return hay.includes(q);
       })
     : tasks;
@@ -32,7 +31,7 @@ function TaskCards({ status, selectedProject, search }) {
   return (
     <div className="space-y-2 w-full">
       {filtered.length === 0 ? (
-        <p>No tasks</p>
+        <p className="text-center bg-white rounded-lg">No tasks</p>
       ) : (
         filtered.map((task) => (
           <div key={task.id} className="p-2 bg-white shadow rounded border">

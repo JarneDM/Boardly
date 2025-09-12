@@ -1,17 +1,26 @@
 @import "tailwindcss";
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
 
 @utility todo {
-  @apply bg-green-200;
+  @apply bg-green-200/40;
 }
 
 @utility in-progress {
-  @apply bg-yellow-200;
+  @apply bg-yellow-200/40;
 }
 
 @utility testing {
-  @apply bg-purple-200;
+  @apply bg-purple-200/40;
 }
 
 @utility done {
-  @apply bg-blue-200;
+  @apply bg-blue-200/40;
 }

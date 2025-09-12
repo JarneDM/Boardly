@@ -16,7 +16,7 @@ function AddProject() {
 
   return (
     <div>
-      <button onClick={() => setShowOverlay(true)} className="cursor-pointer ml-2 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+      <button onClick={() => setShowOverlay(true)} className="cursor-pointer ml-2 p-2 bg-white text-blue-500 rounded-md hover:bg-gray-200">
         Add Project
       </button>
 

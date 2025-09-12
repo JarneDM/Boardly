@@ -7,7 +7,7 @@ import AddLabel from "./AddLabel";
 function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
   return (
     <>
-      <div className="w-full flex items-center justify-between p-4 bg-blue-500">
+      <div className="w-full flex items-center justify-between p-4 bg-blue-600">
         <h2 className="text-white font-bold text-xl">Boardly</h2>
         <Projects selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
         <div className="w-full max-w-md flex items-center">
@@ -18,7 +18,6 @@ function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
             placeholder="Search..."
             type="text"
           />
-
         </div>
 
         <div className="flex items-center">

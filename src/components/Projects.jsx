@@ -8,15 +8,12 @@ import TaskCards from "./TaskCards.jsx";
 function Projects({ selectedProject, setSelectedProject }) {
   const projects = useLiveQuery(() => db.projects.toArray(), []);
 
-
   return (
     <div className="w-50 max-w-sm">
       <Listbox value={selectedProject} onChange={setSelectedProject}>
-
-
         <div className="relative">
           {/* so this is the deafult value (placeholder) or selected project, also the select element in html */}
-          <Listbox.Button className="flex w-full items-center justify-between rounded-xl border border-gray-600 bg-blue-800 px-3 py-2 text-white shadow-sm focus:outline-none focus:ring focus:ring-blue-500/50 transition">
+          <Listbox.Button className="flex w-full items-center justify-between rounded-xl border-none bg-white px-3 py-2 text-blue-500 shadow-sm focus:outline-none focus:ring focus:ring-blue-500/50 transition">
             {selectedProject ? selectedProject.name : "Select a project"}
             <ChevronDown className="h-4 w-4 opacity-70" /> {/* this is the down arrow icon */}
           </Listbox.Button>
@@ -24,7 +21,7 @@ function Projects({ selectedProject, setSelectedProject }) {
           {/* then this is the list with the options to choose from */}
           {/* Listbox.Option is the option element of just plain html yk, that goes inside of Listbox.Options */}
           {projects && (
-            <Listbox.Options className="absolute z-10 mt-2 w-full rounded-xl bg-gray-900 shadow-lg ring-1 ring-black/10 focus:outline-none">
+            <Listbox.Options className="absolute z-10 mt-2 w-full rounded-xl bg-blue-900 shadow-lg ring-1 ring-black/10 focus:outline-none">
               {projects.map((project) => (
                 <Listbox.Option
                   key={project.id}
