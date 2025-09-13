@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { db } from "../db.js";
 import { useLiveQuery } from "dexie-react-hooks";
 
-function AddTask() {
+function AddTask({ statusClasses }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [projectId, setProjectId] = useState(null);
@@ -39,8 +39,11 @@ function AddTask() {
 
   return (
     <>
-      <button onClick={() => setShowOverlay(true)} className="cursor-pointer ml-2 p-2 bg-white text-blue-500 rounded-md hover:bg-gray-200">
-        Add Task
+      <button
+        onClick={() => setShowOverlay(true)}
+        className={`cursor-pointer w-full mt-4 p-1 ${statusClasses} shadow-md border-[1px] border-blue-600 text-blue-500 rounded-md hover:bg-white hover:text-blue-700 hover:p-0.5 hover:text-lg transition-colors`}
+      >
+        +
       </button>
 
       {showOverlay && (

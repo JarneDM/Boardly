@@ -8,8 +8,11 @@ function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
   return (
     <>
       <div className="w-full flex items-center justify-between p-4 bg-blue-600">
-        <h2 className="text-white font-bold text-xl">Boardly</h2>
-        <Projects selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
+        <div className="flex items-center space-x-4">
+          <h1 className="text-white font-bold text-2xl mr-5">Boardly</h1>
+          <Projects selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
+          <AddProject />
+        </div>
         <div className="w-full max-w-md flex items-center">
           <input
             className="text-white w-full border-1 p-2 rounded-xl"
@@ -21,9 +24,7 @@ function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
         </div>
 
         <div className="flex items-center">
-          <AddProject />
           <AddLabel />
-          <AddTask />
         </div>
       </div>
     </>

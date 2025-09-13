@@ -1,5 +1,6 @@
 import React from "react";
 import TaskCards from "./TaskCards";
+import AddTask from "./AddTask";
 
 const statusClasses = {
   Todo: "todo",
@@ -15,6 +16,7 @@ function Status({ status, selectedProject, search }) {
     >
       <h3 className={`font-bold mb-2 px-3 py-1 rounded-xl w-full flex justify-center ${statusClasses[status]}`}>{status}</h3>
       <TaskCards status={status} selectedProject={selectedProject?.id} search={search} />
+      <AddTask statusClasses={statusClasses[status]} />
     </div>
   );
 }
