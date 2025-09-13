@@ -11,7 +11,7 @@ function AddTask({ statusClasses }) {
   const [showOverlay, setShowOverlay] = useState(false);
 
   const defaultLabels = ["Urgent", "Low Priority", "Bug", "Feature", "School", "Personal"];
-  const defaultStatuses = ["Todo", "In Progress", "Testing", "Done"];
+  const defaultStatuses = ["Backlog", "Todo", "In Progress", "Testing", "Done"];
 
   const projects = useLiveQuery(() => db.projects.toArray(), []);
 
@@ -41,7 +41,7 @@ function AddTask({ statusClasses }) {
     <>
       <button
         onClick={() => setShowOverlay(true)}
-        className={`cursor-pointer w-full mt-4 p-1 ${statusClasses} shadow-md border-[1px] border-blue-600 text-blue-500 rounded-md hover:bg-white hover:text-blue-700 hover:p-0.5 hover:text-lg transition-colors`}
+        className={`cursor-pointer w-full mt-4 p-1 ${statusClasses} dark:bg-blue-900 dark:text-white shadow-md border-[1px] border-blue-600 text-blue-800 rounded-md hover:bg-white hover:text-blue-700 hover:p-0.5 hover:text-lg transition-colors`}
       >
         +
       </button>

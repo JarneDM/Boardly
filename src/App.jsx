@@ -8,10 +8,10 @@ function App() {
   const [search, setSearch] = useState("");
 
   return (
-    <>
+    <div className="bg-white min-h-screen dark:bg-[#111827] ">
       <Nav selectedProject={selectedProject} setSelectedProject={setSelectedProject} search={search} setSearch={setSearch} />
       <Board selectedProject={selectedProject} search={search} />
-    </>
+    </div>
   );
 }
 

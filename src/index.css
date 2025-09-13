@@ -1,4 +1,7 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -9,18 +12,22 @@
   }
 }
 
+@utility backlog {
+  @apply bg-[#008170]/40;
+}
+
 @utility todo {
-  @apply bg-green-200/40;
+  @apply bg-green-400/40;
 }
 
 @utility in-progress {
-  @apply bg-yellow-200/40;
+  @apply bg-purple-400/40;
 }
 
 @utility testing {
-  @apply bg-purple-200/40;
+  @apply bg-yellow-200/40;
 }
 
 @utility done {
-  @apply bg-blue-200/40;
+  @apply bg-blue-400/40;
 }

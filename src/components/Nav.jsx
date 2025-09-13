@@ -3,6 +3,7 @@ import AddTask from "./AddTask";
 import Projects from "./Projects";
 import AddProject from "./AddProject";
 import AddLabel from "./AddLabel";
+import ToggleDark from "./ToggleDark";
 
 function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
   return (
@@ -23,8 +24,9 @@ function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
           />
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center space-x-5">
           <AddLabel />
+          <ToggleDark />
         </div>
       </div>
     </>
