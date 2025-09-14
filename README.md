@@ -22,8 +22,7 @@
 
 ---
 
-- [ i ] choose first project when rendering boardly
-- [ ! ] add feature deleting task, labels, projects
+- [ i ] add feature deleting task, labels, projects
 - [ 0 ] fix styling
 - [ 0 ] style task cards
 - [ 0 ] add background
@@ -42,3 +41,4 @@
 - [ x ] add data to db when rendering boardly if db is empty
 - [ x ] render labels from db instead of hard coded
 - [ x ] drag and drop tasks
+- [ x ] choose first project when rendering boardly

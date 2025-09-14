@@ -1,4 +1,4 @@
-// import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db.js";
 import { Listbox } from "@headlessui/react";
@@ -7,6 +7,14 @@ import TaskCards from "./TaskCards.jsx";
 
 function Projects({ selectedProject, setSelectedProject }) {
   const projects = useLiveQuery(() => db.projects.toArray(), []);
+
+  useEffect(() => {
+    if (!selectedProject && projects?.length) {
+      setSelectedProject(projects[0]);
+    }
+  }, [projects, selectedProject, setSelectedProject]);
+
+  if (!projects) return <div>Loading projects...</div>;
 
   return (
     <div className="w-50 max-w-sm">
