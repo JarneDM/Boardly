@@ -2,6 +2,7 @@ import React from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db.js";
 import { Draggable } from "@hello-pangea/dnd";
+import bin from "../assets/bin.png";
 
 function TaskCards({ statusClasses, status, selectedProject, search }) {
   const tasks = useLiveQuery(() => {
@@ -16,12 +17,17 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
     return db.tasks.where("[status+projectId]").equals([status, selectedProject]).toArray();
   }, [status, selectedProject]);
 
+  const deleteTask = async (taskId) => {
+    await db.tasks.delete(taskId);
+    console.log(`Deleted task with Task ID: ${taskId}`);
+  };
+
   if (!tasks) return <p>Loading...</p>;
 
   const q = (search || "").toLowerCase().trim();
   const filtered = q
     ? tasks.filter((t) => {
-        const hay = `${t.title ?? ""} ${t.description ?? ""} ${(t.labels ?? []).join(" ")}`.toLowerCase();
+        const hay = `${t.title ?? ""} ${t.description ?? ""} ${(t.labels ?? []).map((l) => l.name).join(" ")}`.toLowerCase();
         return hay.includes(q);
       })
     : tasks;
@@ -39,7 +45,7 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                className="p-2 bg-white shadow rounded border transition-colors dark:bg-[#03346E] dark:text-[#dbeafe]"
+                className="relative p-2 bg-white shadow rounded border transition-colors dark:bg-[#03346E] dark:text-[#dbeafe]"
               >
                 <h4 className="font-semibold">{task.title}</h4>
                 <p>
@@ -58,6 +64,9 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
                     ))}
                   </div>
                 )}
+                <button onClick={() => deleteTask(task.id)} className="absolute right-1 top-2">
+                  <img className="h-[1rem]" src={bin} alt="delete task" />
+                </button>
               </div>
             )}
           </Draggable>

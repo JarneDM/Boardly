@@ -128,7 +128,7 @@ function AddTask({ statusClasses }) {
                     className={({ active }) =>
                       `cursor-pointer select-none rounded-lg px-3 py-2 ${active ? "bg-blue-600 text-white" : "text-gray-200"}`
                     }
-                    key={status.id}
+                    key={status}
                     value={status}
                   >
                     {({ selected }) => (
