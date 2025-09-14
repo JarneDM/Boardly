@@ -10,7 +10,6 @@
 
 ### Todo
 
-
 `[ 0 ] = todo`
 
 `[ i ] = in progress`
@@ -21,15 +20,14 @@
 
 `[ # ] = bug`
 
---------
+---
 
-- [ i ] drag and drop tasks
-- [ 0 ] choose first project when rendering boardly
+- [ i ] choose first project when rendering boardly
+- [ ! ] add feature deleting task, labels, projects
 - [ 0 ] fix styling
 - [ 0 ] style task cards
 - [ 0 ] add background
 - [ 0 ] add feature for adding labels
-- [ 0 ] add feature deleting task, labels, projects
 - [ 0 ] add date to task
 - [ 0 ] add due date to task
 - [ 0 ] add editing task
@@ -43,3 +41,4 @@
 - [ x ] add filtering
 - [ x ] add data to db when rendering boardly if db is empty
 - [ x ] render labels from db instead of hard coded
+- [ x ] drag and drop tasks
