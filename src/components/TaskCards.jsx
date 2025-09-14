@@ -40,12 +40,14 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
         filtered.map((task, index) => (
           // console.log("Task data:", task),
           <Draggable key={task.id} draggableId={String(task.id)} index={index}>
-            {(provided) => (
+            {(provided, snapshot) => (
               <div
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                className="relative p-2 bg-white shadow rounded border transition-colors dark:bg-[#03346E] dark:text-[#dbeafe]"
+                className={`relative p-2 bg-white shadow rounded border transition-colors dark:bg-[#03346E] dark:text-[#dbeafe] ${
+                  snapshot.isDragging ? "rotate-4" : ""
+                }`}
               >
                 <h4 className="font-semibold">{task.title}</h4>
                 <p>
@@ -65,7 +67,7 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
                   </div>
                 )}
                 <button onClick={() => deleteTask(task.id)} className="absolute right-1 top-2">
-                  <img className="h-[1rem]" src={bin} alt="delete task" />
+                  <img className="h-[0.8rem]" src={bin} alt="delete task" />
                 </button>
               </div>
             )}

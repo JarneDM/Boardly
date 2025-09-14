@@ -30,6 +30,9 @@
 - [ 0 ] add date to task
 - [ 0 ] add due date to task
 - [ 0 ] add editing task
+- [ 0 ] change add project button to dropdown (add, edit, delete) with headless ui (not select)
+- [ 0 ] change add label button to dropdown (add, manage) with headless ui (not select)
+- [ 0 ] link add task button to status so status is already filled in and use doesnt have to choose (user can still choose incase they miss clicked)
 - [ 0 ] ...
 
 ### done
