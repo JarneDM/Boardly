@@ -13,6 +13,8 @@ function AddTask({ statusClasses }) {
   const defaultLabels = ["Urgent", "Low Priority", "Bug", "Feature", "School", "Personal"];
   const defaultStatuses = ["Backlog", "Todo", "In Progress", "Testing", "Done"];
 
+  const labelsArr = useLiveQuery(() => db.labels.toArray(), []);
+
   const projects = useLiveQuery(() => db.projects.toArray(), []);
 
   const handleAddTask = async () => {
@@ -74,7 +76,7 @@ function AddTask({ statusClasses }) {
             </select>
 
             <select value={status} onChange={(e) => setStatus(e.target.value)} className="border p-2 rounded w-full">
-              {defaultStatuses.map((status) => (
+              {defaultStatuses.map((status, idx) => (
                 <option key={status} value={status}>
                   {status}
                 </option>
@@ -91,9 +93,9 @@ function AddTask({ statusClasses }) {
               <option value="" disabled>
                 Add a label
               </option>
-              {defaultLabels.map((label) => (
-                <option key={label} value={label}>
-                  {label}
+              {labelsArr.map((label ,idx) => (
+                <option key={label.id} value={label.name}>
+                  {label.name}
                 </option>
               ))}
             </select>

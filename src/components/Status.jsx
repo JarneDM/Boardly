@@ -19,7 +19,7 @@ function Status({ idx, status, selectedProject, search }) {
         {status}
       </h3>
       <TaskCards statusClasses={statusClasses[status]} status={status} selectedProject={selectedProject?.id} search={search} />
-      <AddTask idx={idx} statusClasses={statusClasses[status]} />
+      <AddTask statusClasses={statusClasses[status]} />
     </div>
   );
 }

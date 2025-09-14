@@ -25,7 +25,6 @@
 
 - [ i ] drag and drop tasks
 - [ 0 ] choose first project when rendering boardly
-- [ 0 ] render labels from db instead of hard coded
 - [ 0 ] fix styling
 - [ 0 ] style task cards
 - [ 0 ] add background
@@ -43,3 +42,4 @@
 - [ x ] filter tasks on project
 - [ x ] add filtering
 - [ x ] add data to db when rendering boardly if db is empty
+- [ x ] render labels from db instead of hard coded
