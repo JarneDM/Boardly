@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { db } from "../db.js";
 import { useLiveQuery } from "dexie-react-hooks";
+import { Listbox } from "@headlessui/react";
+import { Check, ChevronDown } from "lucide-react";
 
 function AddTask({ statusClasses }) {
   const [title, setTitle] = useState("");
@@ -10,7 +12,7 @@ function AddTask({ statusClasses }) {
   const [labels, setLabels] = useState([]);
   const [showOverlay, setShowOverlay] = useState(false);
 
-  const defaultLabels = ["Urgent", "Low Priority", "Bug", "Feature", "School", "Personal"];
+  // const defaultLabels = ["Urgent", "Low Priority", "Bug", "Feature", "School", "Personal"];
   const defaultStatuses = ["Backlog", "Todo", "In Progress", "Testing", "Done"];
 
   const labelsArr = useLiveQuery(() => db.labels.toArray(), []);
@@ -49,14 +51,14 @@ function AddTask({ statusClasses }) {
       </button>
 
       {showOverlay && (
-        <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50">
-          <div className="space-y-2 bg-white p-6 rounded-md shadow-md w-96 relative">
+        <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50 ">
+          <div className="space-y-2 bg-white p-6 rounded-md shadow-md w-96 relative dark:bg-[#003161] dark:text-white">
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Task title"
-              className="border p-2 rounded w-full"
+              className="border p-2 rounded w-full dark:text-white"
             />
 
             <textarea
@@ -66,50 +68,118 @@ function AddTask({ statusClasses }) {
               className="border p-2 rounded w-full"
             />
 
-            <select onChange={(e) => setProjectId(e.target.value)} name="projects" id="projects">
-              <option value="select-project">Select a project</option>
+            {/* <select onChange={(e) => setProjectId(e.target.value)} name="projects" id="projects" className="border p-2 rounded w-full">
+              <option className="dark:text-black" value="select-project">Select a project</option>
               {projects.map((project) => (
                 <option value={project.id} key={project.id}>
                   {project.name}
                 </option>
               ))}
-            </select>
+            </select> */}
 
-            <select value={status} onChange={(e) => setStatus(e.target.value)} className="border p-2 rounded w-full">
-              {defaultStatuses.map((status, idx) => (
-                <option key={status} value={status}>
-                  {status}
-                </option>
-              ))}
-            </select>
+            <Listbox value={projectId} onChange={setProjectId}>
+              <Listbox.Button className="flex w-full items-center justify-between rounded-xl border-none bg-white dark:bg-blue-900 px-3 py-2 text-blue-500 shadow-sm focus:outline-none focus:ring focus:ring-blue-500/50 transition">
+                {projectId ? projects?.find((p) => p.id === projectId)?.name : "Select a project"}
+                <ChevronDown className="h-4 w-4 opacity-70" />
+              </Listbox.Button>
 
-            <select
-              name="labels"
-              id="labels"
-              value=""
-              onChange={(e) => setLabels([...labels, e.target.value])}
-              className="border p-2 rounded w-full"
-            >
-              <option value="" disabled>
-                Add a label
-              </option>
-              {labelsArr.map((label ,idx) => (
-                <option key={label.id} value={label.name}>
-                  {label.name}
-                </option>
-              ))}
-            </select>
+              <Listbox.Options className="absolute z-10 mt-2 w-full rounded-xl bg-blue-900 shadow-lg ring-1 ring-black/10 focus:outline-none">
+                <Listbox.Option
+                  key="no-project"
+                  value={null}
+                  className={({ active }) =>
+                    `cursor-pointer select-none rounded-lg px-3 py-2 ${active ? "bg-blue-600 text-white" : "text-gray-200"}`
+                  }
+                >
+                  {({ selected }) => (
+                    <div className="flex items-center justify-between">
+                      <span>No Project</span>
+                      {selected && <Check className="h-4 w-4 text-green-400" />}
+                    </div>
+                  )}
+                </Listbox.Option>
+                {projects?.map((project) => (
+                  <Listbox.Option
+                    key={project.id}
+                    value={project.id}
+                    className={({ active }) =>
+                      `cursor-pointer select-none rounded-lg px-3 py-2 ${active ? "bg-blue-600 text-white" : "text-gray-200"}`
+                    }
+                  >
+                    {({ selected }) => (
+                      <div className="flex items-center justify-between">
+                        <span>{project.name}</span>
+                        {selected && <Check className="h-4 w-4 text-green-400" />}
+                      </div>
+                    )}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </Listbox>
 
+            <Listbox value={status} onChange={setStatus}>
+              <Listbox.Button className="flex w-full items-center justify-between rounded-xl border-none bg-white dark:bg-blue-900 px-3 py-2 text-blue-500 shadow-sm focus:outline-none focus:ring focus:ring-blue-500/50 transition">
+                {status ? status : "Select a project"}
+                <ChevronDown className="h-4 w-4 opacity-70" />
+              </Listbox.Button>
+              <Listbox.Options className="absolute z-10 mt-2 w-full rounded-xl bg-blue-900 shadow-lg ring-1 ring-black/10 focus:outline-none">
+                {defaultStatuses.map((status) => (
+                  <Listbox.Option
+                    className={({ active }) =>
+                      `cursor-pointer select-none rounded-lg px-3 py-2 ${active ? "bg-blue-600 text-white" : "text-gray-200"}`
+                    }
+                    key={status.id}
+                    value={status}
+                  >
+                    {({ selected }) => (
+                      <div className="flex items-center justify-between">
+                        <span>{status}</span>
+                        {selected && <Check className="h-4 w-4 text-green-400" />}{" "}
+                        {/* Check is an icon that appears to see wich one is selected*/}
+                      </div>
+                    )}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </Listbox>
+
+            <Listbox value={labels} onChange={setLabels} multiple>
+              <Listbox.Button className="flex w-full items-center justify-between rounded-xl border-none bg-white dark:bg-blue-900 px-3 py-2 text-blue-500 shadow-sm focus:outline-none focus:ring focus:ring-blue-500/50 transition">
+                {labels.length > 0 ? labels.map((l) => l.name).join(", ") : "Add a label"}
+                <ChevronDown className="h-4 w-4 opacity-70" />
+              </Listbox.Button>
+
+              <Listbox.Options className="absolute z-10 mt-2 w-full rounded-xl bg-blue-900 shadow-lg ring-1 ring-black/10 focus:outline-none">
+                {labelsArr?.map((label) => (
+                  <Listbox.Option
+                    key={label.id}
+                    value={label}
+                    className={({ active }) =>
+                      `cursor-pointer select-none rounded-lg px-3 py-2 ${active ? "bg-blue-600 text-white" : "text-gray-200"}`
+                    }
+                  >
+                    {({ selected }) => (
+                      <div className="flex items-center justify-between">
+                        <span>{label.name}</span>
+                        {selected && <Check className="h-4 w-4 text-green-400" />}
+                      </div>
+                    )}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </Listbox>
+
+            {/* Render selected labels as tags */}
             {labels.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {labels.map((l, i) => (
-                  <span key={i} className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm">
-                    {l}
+              <div className="flex flex-wrap gap-2 mt-2">
+                {labels.map((l) => (
+                  <span key={l.id} className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm">
+                    {l.name}
                   </span>
                 ))}
               </div>
             )}
-            <button onClick={() => setShowOverlay(false)} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+            <button onClick={() => setShowOverlay(false)} className="absolute top-1 right-2 text-gray-500 hover:text-gray-700">
               x
             </button>
             <button onClick={handleAddTask} className="cursor-pointer p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 w-full">

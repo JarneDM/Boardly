@@ -12,13 +12,8 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
       return db.tasks.where("status").equals(status).toArray();
     }
 
-    
-
     // if a project is selected, show tasks of status and project
-    return db.tasks
-      .where("[status+projectId]")
-      .equals([status, String(selectedProject)])
-      .toArray();
+    return db.tasks.where("[status+projectId]").equals([status, selectedProject]).toArray();
   }, [status, selectedProject]);
 
   if (!tasks) return <p>Loading...</p>;
@@ -44,7 +39,7 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                className="p-2 bg-white shadow rounded border dark:bg-[#03346E] dark:text-[#dbeafe]"
+                className="p-2 bg-white shadow rounded border transition-colors dark:bg-[#03346E] dark:text-[#dbeafe]"
               >
                 <h4 className="font-semibold">{task.title}</h4>
                 <p>
@@ -56,12 +51,9 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
                 </p>
                 {task.labels?.length > 0 && (
                   <div className="flex flex-wrap gap-1 mt-1">
-                    {task.labels.map((l, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded"
-                      >
-                        {l}
+                    {task.labels.map((l, idx) => (
+                      <span key={idx} className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded">
+                        {l.name}
                       </span>
                     ))}
                   </div>
