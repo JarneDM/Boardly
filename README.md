@@ -8,20 +8,38 @@
 
 ### this is a project where i am learning tailwind css and some more react skills
 
-#### Todo
+### Todo
 
-- choose first project when rendering boardly
-- render labels from db instead of hard coded
-- fix styling
-- style task cards
-- add background
-- add feature for adding labels
-- add feature deleting task, labels, projects
 
-#### done
+`[ 0 ] = todo`
 
-- render projects in dropdown menu nav bar
-- add feature for adding project
-- filter tasks on project
-- add filtering
-- add data to db when rendering boardly if db is empty
+`[ i ] = in progress`
+
+`[ x ] = done`
+
+`[ ! ] = important / priority`
+
+`[ # ] = bug`
+
+--------
+
+- [ i ] drag and drop tasks
+- [ 0 ] choose first project when rendering boardly
+- [ 0 ] render labels from db instead of hard coded
+- [ 0 ] fix styling
+- [ 0 ] style task cards
+- [ 0 ] add background
+- [ 0 ] add feature for adding labels
+- [ 0 ] add feature deleting task, labels, projects
+- [ 0 ] add date to task
+- [ 0 ] add due date to task
+- [ 0 ] add editing task
+- [ 0 ] ...
+
+### done
+
+- [ x ] render projects in dropdown menu nav bar
+- [ x ] add feature for adding project
+- [ x ] filter tasks on project
+- [ x ] add filtering
+- [ x ] add data to db when rendering boardly if db is empty
