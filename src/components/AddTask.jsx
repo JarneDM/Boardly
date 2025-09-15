@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { db } from "../db.js";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Listbox } from "@headlessui/react";
-import { Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown, ChevronRight } from "lucide-react";
 
 function AddTask({ statusClasses }) {
   const [title, setTitle] = useState("");
@@ -146,10 +146,13 @@ function AddTask({ statusClasses }) {
             <Listbox value={labels} onChange={setLabels} multiple>
               <Listbox.Button className="flex w-full items-center justify-between rounded-xl border-none bg-white dark:bg-blue-900 px-3 py-2 text-blue-500 shadow-sm focus:outline-none focus:ring focus:ring-blue-500/50 transition">
                 {labels.length > 0 ? labels.map((l) => l.name).join(", ") : "Add a label"}
-                <ChevronDown className="h-4 w-4 opacity-70" />
+                <ChevronRight className="h-4 w-4 opacity-70" />
               </Listbox.Button>
 
-              <Listbox.Options className="absolute z-10 mt-2 w-full rounded-xl bg-blue-900 shadow-lg ring-1 ring-black/10 focus:outline-none">
+              <Listbox.Options
+                anchor="right bottom"
+                className="absolute z-1000 mt-2 w-40 rounded-xl bg-blue-900 shadow-lg ring-1 ring-black/10 focus:outline-none"
+              >
                 {labelsArr?.map((label) => (
                   <Listbox.Option
                     key={label.id}

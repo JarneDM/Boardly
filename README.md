@@ -22,15 +22,13 @@
 
 ---
 
-- [ i ] add feature deleting task, labels, projects
+- [ i ] add editing task
+- [ 0 ] link labels to task incase label gets deleted it also gets deleted in the task.labels array
 - [ 0 ] fix styling
 - [ 0 ] style task cards
 - [ 0 ] add background
-- [ 0 ] add feature for adding labels
 - [ 0 ] add date to task
 - [ 0 ] add due date to task
-- [ 0 ] add editing task
-- [ 0 ] change add label button to dropdown (add, manage) with headless ui (not select)
 - [ 0 ] link add task button to status so status is already filled in and use doesnt have to choose (user can still choose incase they miss clicked)
 - [ 0 ] ...
 
@@ -47,3 +45,6 @@
 - [ x ] change add project button to dropdown (add, edit, delete) with headless ui (not select)
 - [ x ] add edit project feature
 - [ x ] add delete project feature
+- [ x ] add feature deleting task, labels, projects
+- [ x ] add feature for adding labels
+- [ x ] change add label button to dropdown (add, manage) with headless ui (not select)
