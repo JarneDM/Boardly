@@ -15,6 +15,7 @@ function Projects({ selectedProject, setSelectedProject }) {
         setSelectedProject(updated);
       }
     }
+    if (!selectedProject && projects?.length) setSelectedProject(projects[0]);
   }, [projects, selectedProject, setSelectedProject]);
 
   if (!projects) return <div>Loading projects...</div>;

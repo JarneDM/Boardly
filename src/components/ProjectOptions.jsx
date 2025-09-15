@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { db } from "../db.js";
 import { Menu, MenuButton, MenuItems, MenuItem, MenuSeparator } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
+import { useLiveQuery } from "dexie-react-hooks";
 
-function AddProject({ selectedProject }) {
+function AddProject({ selectedProject, setSelectedProject }) {
   const [name, setName] = useState("");
   const [showAdd, setShowAdd] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+
+  const projects = useLiveQuery(() => db.projects.toArray(), []);
+
   const handleAddProject = async () => {
     try {
       await db.projects.add({ name });
@@ -27,8 +32,15 @@ function AddProject({ selectedProject }) {
     }
   };
 
-  const test = () => {
-    console.log("yep");
+  const handleDeleteProject = async () => {
+    try {
+      await db.projects.delete(selectedProject.id);
+      await db.tasks.where("projectId").equals(selectedProject.id).delete();
+      setSelectedProject(projects[0]);
+      setShowDelete(false);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -55,7 +67,7 @@ function AddProject({ selectedProject }) {
           </MenuItem>
           <MenuSeparator className="my-1 h-[0.5px] bg-black" />
           <MenuItem className="bg-red-400 p-1 rounded-md">
-            <button onClick={test} className="block w-full text-left data-focus:bg-red-600">
+            <button onClick={() => setShowDelete(true)} className="block w-full text-left data-focus:bg-red-600">
               Delete Project
             </button>
           </MenuItem>
@@ -96,8 +108,32 @@ function AddProject({ selectedProject }) {
               x
             </button>
             <button onClick={handleEditProject} className="cursor-pointer p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 w-full">
-              Add Project
+              Edit Project
             </button>
+          </div>
+        </div>
+      )}
+
+      {showDelete && (
+        <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50">
+          <div className="space-y-2 bg-white shadow-md p-6 rounded-md shadow-md w-96 relative">
+            <p className="text-lg text-center">
+              Are you sure you want to delete <b>{selectedProject.name}</b>
+            </p>
+            <div className="flex justify-center items-center space-x-4">
+              <button
+                onClick={() => setShowDelete(false)}
+                className="cursor-pointer p-2 bg-gray-200 hover:bg-gray-300 text-black rounded-md hover:bg-blue-700 w-full"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteProject}
+                className="cursor-pointer p-2 bg-red-500 hover:bg-red-700 text-white rounded-md hover:bg-blue-700 w-full"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       )}
