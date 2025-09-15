@@ -23,7 +23,6 @@
 ---
 
 - [ i ] add feature deleting task, labels, projects
-- [ inpm r ] change add project button to dropdown (add, edit, delete) with headless ui (not select)
 - [ 0 ] fix styling
 - [ 0 ] style task cards
 - [ 0 ] add background
@@ -45,3 +44,6 @@
 - [ x ] render labels from db instead of hard coded
 - [ x ] drag and drop tasks
 - [ x ] choose first project when rendering boardly
+- [ x ] change add project button to dropdown (add, edit, delete) with headless ui (not select)
+- [ x ] add edit project feature
+- [ x ] add delete project feature
