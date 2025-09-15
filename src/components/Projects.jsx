@@ -9,8 +9,11 @@ function Projects({ selectedProject, setSelectedProject }) {
   const projects = useLiveQuery(() => db.projects.toArray(), []);
 
   useEffect(() => {
-    if (!selectedProject && projects?.length) {
-      setSelectedProject(projects[0]);
+    if (selectedProject) {
+      const updated = projects?.find((p) => p.id === selectedProject.id);
+      if (updated && updated.name !== selectedProject.name) {
+        setSelectedProject(updated);
+      }
     }
   }, [projects, selectedProject, setSelectedProject]);
 

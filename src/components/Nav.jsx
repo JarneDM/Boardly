@@ -12,7 +12,7 @@ function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
         <div className="flex items-center space-x-4">
           <h1 className="text-white font-bold text-2xl mr-5">Boardly</h1>
           <Projects selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
-          <AddProject />
+          <AddProject selectedProject={selectedProject} />
         </div>
         <div className="w-full max-w-md flex items-center">
           <input
