@@ -54,22 +54,24 @@ function ManageLabels({ labelName, setLabelName, setShowManage }) {
         <div className="bg-white p-10 space-y-4 rounded-lg w-70 shadow-lg">
           <h2 className="font-bold text-lg flex justify-center items-center">Manage labels</h2>
           <hr />
-          {labels?.map((label) => (
-            <div key={label.id} className="flex space-x-2">
-              <p key={label.id} className="flex justify-start text-base items-center bg-blue-100 text-blue-700 rounded-md p-1">
-                {label.name}
-              </p>
+          <div className="bg-gray-200 shadow-md p-2 rounded-md space-y-2 ">
+            {labels?.map((label) => (
+              <div key={label.id} className="flex space-x-2">
+                <p key={label.id} className="flex justify-start text-base items-center bg-blue-100 text-blue-700 rounded-md p-1 shadow-md">
+                  {label.name}
+                </p>
 
-              <div className="space-x-1 flex items-center justify-center">
-                <button onClick={() => openEdit(label)}>
-                  <SquarePen className="h-4 w-4" />
-                </button>
-                <button onClick={() => openDelete(label)}>
-                  <Trash className="h-4 w-4" />
-                </button>
+                <div className="space-x-1 flex items-center justify-center">
+                  <button onClick={() => openEdit(label)}>
+                    <SquarePen className="h-4 w-4" />
+                  </button>
+                  <button onClick={() => openDelete(label)}>
+                    <Trash className="h-4 w-4 text-red-600" />
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
           <button
             onClick={() => setShowManage(false)}
             className="cursor-pointer p-2 bg-gray-200 hover:bg-gray-300 text-black rounded-md hover:bg-blue-700 w-full"

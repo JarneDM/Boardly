@@ -30,6 +30,7 @@
 - [ 0 ] add date to task
 - [ 0 ] add due date to task
 - [ 0 ] link add task button to status so status is already filled in and use doesnt have to choose (user can still choose incase they miss clicked)
+- [ 0 ] Adding different themes to it (color schemes)
 - [ 0 ] ...
 
 ### done

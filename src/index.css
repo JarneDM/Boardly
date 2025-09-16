@@ -21,7 +21,7 @@
 }
 
 @utility in-progress {
-  @apply bg-purple-400/40;
+  @apply bg-blue-600/40;
 }
 
 @utility testing {
@@ -29,5 +29,5 @@
 }
 
 @utility done {
-  @apply bg-blue-400/40;
+  @apply bg-blue-300/40;
 }

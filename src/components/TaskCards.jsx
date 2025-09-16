@@ -45,7 +45,7 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                className={`relative p-2 bg-white shadow rounded border transition-colors dark:bg-[#03346E] dark:text-[#dbeafe] ${
+                className={`relative p-2 bg-white hover:bg-gray-100 dark:hover:bg-[#03346E]/60 hover:shadow-blue-400/50 shadow-md rounded border transition-colors dark:bg-[#03346E] dark:text-[#dbeafe] ${
                   snapshot.isDragging ? "rotate-4" : ""
                 }`}
               >
