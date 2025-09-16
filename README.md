@@ -8,6 +8,8 @@
 
 ### this is a project where i am learning tailwind css and some more react skills
 
+#### Current hours spent on this project: [![wakatime](https://wakatime.com/badge/user/86a552fc-d0f8-4683-b1f8-6319e690ff78/project/7d042cc3-169a-4aca-9c6f-e407b54df603.svg)](https://wakatime.com/badge/user/86a552fc-d0f8-4683-b1f8-6319e690ff78/project/7d042cc3-169a-4aca-9c6f-e407b54df603)
+
 ### Todo
 
 `[ 0 ] = todo`
@@ -22,7 +24,7 @@
 
 ---
 
-- [ i ] add editing task
+- [ i ] add labels when editing task
 - [ 0 ] link labels to task incase label gets deleted it also gets deleted in the task.labels array
 - [ 0 ] fix styling
 - [ 0 ] style task cards
@@ -49,3 +51,4 @@
 - [ x ] add feature deleting task, labels, projects
 - [ x ] add feature for adding labels
 - [ x ] change add label button to dropdown (add, manage) with headless ui (not select)
+- [ x ] add editing task

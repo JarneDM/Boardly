@@ -4,7 +4,7 @@ import { Menu, MenuButton, MenuItems, MenuItem, MenuSeparator } from "@headlessu
 import { ChevronDown } from "lucide-react";
 import { useLiveQuery } from "dexie-react-hooks";
 
-function AddProject({ selectedProject, setSelectedProject }) {
+function ProjectOptions({ selectedProject, setSelectedProject }) {
   const [name, setName] = useState("");
   const [showAdd, setShowAdd] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -141,4 +141,4 @@ function AddProject({ selectedProject, setSelectedProject }) {
   );
 }
 
-export default AddProject;
+export default ProjectOptions;

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db.js";
 import { Draggable } from "@hello-pangea/dnd";
-import bin from "../assets/bin.png";
+// import bin from "../assets/bin.png";
+import { Trash, SquarePen } from "lucide-react";
+import EditTask from "./EditTask.jsx";
 
 function TaskCards({ statusClasses, status, selectedProject, search }) {
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [showDelete, setShowDelete] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const tasks = useLiveQuery(() => {
     if (!status) return [];
 
@@ -17,9 +22,31 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
     return db.tasks.where("[status+projectId]").equals([status, selectedProject]).toArray();
   }, [status, selectedProject]);
 
-  const deleteTask = async (taskId) => {
-    await db.tasks.delete(taskId);
-    console.log(`Deleted task with Task ID: ${taskId}`);
+  const openDeleteTask = (task) => {
+    try {
+      setSelectedTask(task);
+      setShowDelete(true);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const openEditTask = (task) => {
+    try {
+      setSelectedTask(task);
+      setShowEdit(true);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const deleteTask = async () => {
+    try {
+      await db.tasks.delete(selectedTask.id);
+      console.log(`Deleted task with Task ID: ${selectedTask.id}`);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   if (!tasks) return <p>Loading...</p>;
@@ -66,13 +93,44 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
                     ))}
                   </div>
                 )}
-                <button onClick={() => deleteTask(task.id)} className="absolute right-1 top-2">
-                  <img className="h-[0.8rem]" src={bin} alt="delete task" />
-                </button>
+                <div className="absolute right-1 top-2">
+                  <button onClick={() => openEditTask(task)}>
+                    <SquarePen className="h-[0.8rem] text-blue-600" />
+                  </button>
+                  <button onClick={() => openDeleteTask(task)}>
+                    <Trash className="h-[0.8rem] text-red-600" />
+                  </button>
+                </div>
               </div>
             )}
           </Draggable>
         ))
+      )}
+
+      {showEdit && <EditTask selectedTask={selectedTask} setSelectedTask={setSelectedTask} setShowEdit={setShowEdit} />}
+
+      {showDelete && (
+        <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50">
+          <div className="space-y-2 bg-white shadow-md p-6 rounded-md shadow-md w-96 relative">
+            <p className="text-lg text-center">
+              Are you sure you want to delete <b>{selectedTask.name}</b>
+            </p>
+            <div className="flex justify-center items-center space-x-4">
+              <button
+                onClick={() => setShowDelete(false)}
+                className="cursor-pointer p-2 bg-gray-200 hover:bg-gray-300 text-black rounded-md hover:bg-blue-700 w-full"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={deleteTask}
+                className="cursor-pointer p-2 bg-red-500 hover:bg-red-700 text-white rounded-md hover:bg-blue-700 w-full"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

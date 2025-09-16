@@ -95,7 +95,7 @@ function ManageLabels({ labelName, setLabelName, setShowManage }) {
               x
             </button>
             <button onClick={handleEditLabel} className="cursor-pointer p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 w-full">
-              Edit Project
+              Edit Label
             </button>
           </div>
         </div>
