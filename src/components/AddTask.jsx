@@ -4,13 +4,14 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { Listbox } from "@headlessui/react";
 import { Check, ChevronDown, ChevronRight } from "lucide-react";
 
-function AddTask({ statusClasses }) {
+function AddTask({ statusClasses, dueDate, setDueDate }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [projectId, setProjectId] = useState(null);
   const [status, setStatus] = useState("Todo");
   const [labels, setLabels] = useState([]);
   const [showOverlay, setShowOverlay] = useState(false);
+  // const [dueDate, setDueDate] = useState("");
 
   // const defaultLabels = ["Urgent", "Low Priority", "Bug", "Feature", "School", "Personal"];
   const defaultStatuses = ["Backlog", "Todo", "In Progress", "Testing", "Done"];
@@ -27,6 +28,7 @@ function AddTask({ statusClasses }) {
         status,
         labels,
         projectId,
+        dueDate: new Date(dueDate),
         createdAt: new Date(),
       });
 
@@ -35,6 +37,7 @@ function AddTask({ statusClasses }) {
       setProjectId(null);
       setStatus("Todo");
       setLabels([]);
+      setDueDate(new Date());
       setShowOverlay(false);
     } catch (err) {
       console.error("Failed to add task:", err);
@@ -59,6 +62,7 @@ function AddTask({ statusClasses }) {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Task title"
               className="border p-2 rounded w-full dark:text-white"
+              required
             />
 
             <textarea
@@ -182,6 +186,8 @@ function AddTask({ statusClasses }) {
                 ))}
               </div>
             )}
+
+            <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
             <button onClick={() => setShowOverlay(false)} className="absolute top-1 right-2 text-gray-500 hover:text-gray-700">
               x
             </button>

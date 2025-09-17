@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TaskCards from "./TaskCards";
 import AddTask from "./AddTask";
 import { Droppable } from "@hello-pangea/dnd";
@@ -12,6 +12,7 @@ const statusClasses = {
 };
 
 function Status({ status, selectedProject, search }) {
+  const [dueDate, setDueDate] = useState(new Date());
   return (
     <Droppable droppableId={status}>
       {(provided) => (
@@ -24,11 +25,18 @@ function Status({ status, selectedProject, search }) {
             {status}
           </h3>
 
-          <TaskCards statusClasses={statusClasses[status]} status={status} selectedProject={selectedProject?.id} search={search} />
+          <TaskCards
+            statusClasses={statusClasses[status]}
+            status={status}
+            selectedProject={selectedProject?.id}
+            search={search}
+            setDueDate={setDueDate}
+            dueDate={dueDate}
+          />
 
           {provided.placeholder}
 
-          <AddTask statusClasses={statusClasses[status]} />
+          <AddTask statusClasses={statusClasses[status]} dueDate={dueDate} setDueDate={setDueDate} />
         </div>
       )}
     </Droppable>

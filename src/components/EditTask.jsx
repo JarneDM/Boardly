@@ -5,7 +5,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { Listbox } from "@headlessui/react";
 import { Check, ChevronDown, ChevronRight } from "lucide-react";
 
-function EditTask({ selectedTask, setSelectedTask, setShowEdit }) {
+function EditTask({ selectedTask, setSelectedTask, setShowEdit, dueDate, setDueDate }) {
   const [newName, setNewName] = useState(selectedTask.title);
   const [newDescription, setNewDescription] = useState(selectedTask.description);
   const [newLabels, setNewLabels] = useState([]);
@@ -33,18 +33,21 @@ function EditTask({ selectedTask, setSelectedTask, setShowEdit }) {
 
   const handleTaskEdit = async () => {
     try {
-      if (newName && newName !== selectedTask.title) {
-        await db.tasks.update(selectedTask.id, { title: newName });
-        setSelectedTask({ ...selectedTask, title: newName });
-      }
+      const updates = {};
 
-      await db.tasks.update(selectedTask.id, { description: newDescription });
-      setSelectedTask({ ...selectedTask, description: newDescription });
+      if (newName && newName !== selectedTask.title) updates.title = newName;
+      if (dueDate && dueDate !== selectedTask.duedate) updates.duedate = new Date(dueDate);
+      if (newDescription !== selectedTask.description) updates.description = newDescription;
+
+      if (Object.keys(updates).length > 0) {
+        await db.tasks.update(selectedTask.id, updates);
+        setSelectedTask({ ...selectedTask, ...updates });
+      }
 
       if (newLabels.length > 0) {
         await handleAddLabels();
       }
-      // setNewName(selectedTask.title);d
+
       setShowEdit(false);
     } catch (err) {
       console.error(err);
@@ -93,6 +96,10 @@ function EditTask({ selectedTask, setSelectedTask, setShowEdit }) {
               placeholder="Task description"
               className="border p-2 rounded w-full bg-white h-30 shadow-md"
             />
+          </div>
+
+          <div>
+            <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
           </div>
 
           <div>
