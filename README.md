@@ -24,11 +24,11 @@
 
 ---
 
+- [ i ] add date to task
 - [ 0 ] link labels to task incase label gets deleted it also gets deleted in the task.labels array
 - [ 0 ] fix styling
 - [ 0 ] style task cards
 - [ 0 ] add background
-- [ 0 ] add date to task
 - [ 0 ] add due date to task
 - [ 0 ] link add task button to status so status is already filled in and use doesnt have to choose (user can still choose incase they miss clicked)
 - [ 0 ] Adding different themes to it (color schemes)
