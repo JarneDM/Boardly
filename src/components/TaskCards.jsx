@@ -76,7 +76,9 @@ function TaskCards({ statusClasses, status, selectedProject, search }) {
                   snapshot.isDragging ? "rotate-4" : ""
                 }`}
               >
-                <h4 className="font-semibold">{task.title}</h4>
+                <h4 className="font-semibold flex-auto">
+                  {task.title ? (task.title.length < 20 ? task.title : `${task.title.slice(0, 20)}...`) : task.title}
+                </h4>
                 <p>
                   {task.description
                     ? task.description.length < 20

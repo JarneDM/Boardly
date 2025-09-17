@@ -24,8 +24,6 @@
 
 ---
 
-- [ i ] add labels when editing task
-- [ i ] edit description when editing tasks
 - [ 0 ] link labels to task incase label gets deleted it also gets deleted in the task.labels array
 - [ 0 ] fix styling
 - [ 0 ] style task cards
@@ -53,3 +51,5 @@
 - [ x ] add feature for adding labels
 - [ x ] change add label button to dropdown (add, manage) with headless ui (not select)
 - [ x ] add editing task
+- [ x ] add labels when editing task
+- [ x ] edit description when editing tasks
