@@ -10,7 +10,7 @@ function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
     <>
       <div className="w-full flex items-center justify-between p-4 bg-blue-600">
         <div className="flex items-center space-x-4">
-          <h1 className="text-white font-bold text-2xl mr-5">Boardly</h1>
+          <h1 className="text-white font-bold text-2xl mr-5">Skivio</h1>
           <Projects selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
           <ProjectOptions selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
         </div>

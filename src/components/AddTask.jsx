@@ -28,7 +28,7 @@ function AddTask({ statusClasses, dueDate, setDueDate }) {
         status,
         labels,
         projectId,
-        dueDate: new Date(dueDate),
+        duedate: dueDate,
         createdAt: new Date(),
       });
 
@@ -37,7 +37,7 @@ function AddTask({ statusClasses, dueDate, setDueDate }) {
       setProjectId(null);
       setStatus("Todo");
       setLabels([]);
-      setDueDate(new Date());
+      setDueDate("");
       setShowOverlay(false);
     } catch (err) {
       console.error("Failed to add task:", err);
@@ -187,7 +187,12 @@ function AddTask({ statusClasses, dueDate, setDueDate }) {
               </div>
             )}
 
-            <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+            <input
+              type="date"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+              className="border-none shadow-md text-blue-500 p-2 rounded-lg w-full dark:text-white"
+            />
             <button onClick={() => setShowOverlay(false)} className="absolute top-1 right-2 text-gray-500 hover:text-gray-700">
               x
             </button>

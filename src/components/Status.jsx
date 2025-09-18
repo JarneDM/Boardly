@@ -12,7 +12,7 @@ const statusClasses = {
 };
 
 function Status({ status, selectedProject, search }) {
-  const [dueDate, setDueDate] = useState(new Date());
+  const [dueDate, setDueDate] = useState("");
   return (
     <Droppable droppableId={status}>
       {(provided) => (

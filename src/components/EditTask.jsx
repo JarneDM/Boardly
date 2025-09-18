@@ -99,7 +99,12 @@ function EditTask({ selectedTask, setSelectedTask, setShowEdit, dueDate, setDueD
           </div>
 
           <div>
-            <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+            <input
+              type="date"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+              className="border-none shadow-md text-blue-500 p-2 rounded-lg w-full dark:text-white"
+            />
           </div>
 
           <div>

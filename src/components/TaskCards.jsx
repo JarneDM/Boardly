@@ -54,6 +54,7 @@ function TaskCards({ statusClasses, status, selectedProject, search, setDueDate,
     try {
       await db.tasks.delete(selectedTask.id);
       console.log(`Deleted task with Task ID: ${selectedTask.id}`);
+      setShowDelete(false);
     } catch (err) {
       console.error(err);
     }
