@@ -14,7 +14,7 @@ function ToggleDark() {
         onClick={toggleDark}
         className=" border-none bg-transparent p-0 m-0 flex items-center dark:transform dark:rotate-180 dark:transition-all transition-all"
       >
-        <img className="h-[2rem]" src={toggle} alt="Toggle Dark Mode" />
+        <img className="h-[2rem] invert" src={toggle} alt="Toggle Dark Mode" />
       </button>
     </div>
   );

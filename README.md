@@ -1,4 +1,4 @@
-# Boardly
+# Skivio
 
 ### A KanBan board made with:
 

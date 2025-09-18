@@ -4,13 +4,15 @@ import Projects from "./Projects";
 import ProjectOptions from "./ProjectOptions";
 import AddLabel from "./AddLabel";
 import ToggleDark from "./ToggleDark";
+import Skivio from "../assets/skivio-logo-nobg.png";
 
 function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
   return (
     <>
       <div className="w-full flex items-center justify-between p-4 bg-blue-600">
         <div className="flex items-center space-x-4">
-          <h1 className="text-white font-bold text-2xl mr-5">Skivio</h1>
+          {/* <h1 className="text-white font-bold text-2xl mr-5">Skivio</h1> */}
+          <img className="h-10" src={Skivio} alt="Skivio logo" />
           <Projects selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
           <ProjectOptions selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
         </div>
