@@ -25,6 +25,8 @@
 ---
 
 - [ i ] add input validation
+- [ i ] render only task of selected project in calendar view
+- [ i ] add add task button in calendar view
 - [ 0 ] link labels to task incase label gets deleted it also gets deleted in the task.labels array
 - [ 0 ] fix styling
 - [ 0 ] style task cards
@@ -54,3 +56,4 @@
 - [ x ] edit description when editing tasks
 - [ x ] add date to task
 - [ x ] add due date to task
+- [ x ] add calendar view

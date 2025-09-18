@@ -1,21 +1,42 @@
 import "./App.css";
-import Board from "./components/Status/Board.jsx";
-import Nav from "./components/Header/Nav.jsx";
-import { useEffect, useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import KanbanPage from "./pages/KanbanPage.jsx";
+import CalendarPage from "./pages/CalendarPage.jsx";
+import WhiteBoardPage from "./pages/WhiteBoardPage.jsx";
+import { useState } from "react";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [search, setSearch] = useState("");
-
-  // useEffect(() => {
-  //   document.documentElement.classList.add("dark");
-  // });
-
   return (
-    <div className="bg-[#FFF9D0] min-h-screen dark:bg-[#111827] transition-colors">
-      <Nav selectedProject={selectedProject} setSelectedProject={setSelectedProject} search={search} setSearch={setSearch} />
-      <Board selectedProject={selectedProject} search={search} />
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <KanbanPage selectedProject={selectedProject} setSelectedProject={setSelectedProject} search={search} setSearch={setSearch} />
+          }
+        />
+        <Route
+          path="/calendar"
+          element={
+            <CalendarPage selectedProject={selectedProject} setSelectedProject={setSelectedProject} search={search} setSearch={setSearch} />
+          }
+        />
+        <Route
+          path="/whiteboard"
+          element={
+            <WhiteBoardPage
+              selectedProject={selectedProject}
+              setSelectedProject={setSelectedProject}
+              search={search}
+              setSearch={setSearch}
+            />
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
