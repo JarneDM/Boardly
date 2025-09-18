@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import TaskCards from "./TaskCards";
-import AddTask from "./AddTask";
+import TaskCards from "../Tasks/TaskCards.jsx";
+import AddTask from "../Tasks/AddTask.jsx";
 import { Droppable } from "@hello-pangea/dnd";
 
 const statusClasses = {

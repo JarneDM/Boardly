@@ -1,7 +1,7 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { Trash, SquarePen } from "lucide-react";
 import React, { useState } from "react";
-import { db } from "../db.js";
+import { db } from "../../db.js";
 
 function ManageLabels({ labelName, setLabelName, setShowManage }) {
   const labels = useLiveQuery(() => db.labels.toArray(), []);

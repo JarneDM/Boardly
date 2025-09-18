@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "../db.js";
+import { db } from "../../db.js";
 import { Draggable } from "@hello-pangea/dnd";
 // import bin from "../assets/bin.png";
 import { Trash, SquarePen } from "lucide-react";
@@ -65,7 +65,9 @@ function TaskCards({ statusClasses, status, selectedProject, search, setDueDate,
   const q = (search || "").toLowerCase().trim();
   const filtered = q
     ? tasks.filter((t) => {
-        const hay = `${t.title ?? ""} ${t.description ?? ""} ${(t.labels ?? []).map((l) => l.name).join(" ")}`.toLowerCase();
+        const hay = `${t.title ?? ""} ${t.description ?? ""} ${(t.labels ?? []).map((l) => l.name).join(" ")} ${
+          t.status ?? ""
+        }`.toLowerCase();
         return hay.includes(q);
       })
     : tasks;

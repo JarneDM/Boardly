@@ -1,7 +1,7 @@
 import React from "react";
-import Status from "./Status";
+import Status from "./Status.jsx";
 import { DragDropContext } from "@hello-pangea/dnd";
-import { db } from "../db.js";
+import { db } from "../../db.js";
 
 function Board({ selectedProject, search }) {
   const statuses = ["Backlog", "Todo", "In Progress", "Testing", "Done"];

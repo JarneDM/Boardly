@@ -1,10 +1,10 @@
 import React from "react";
-import AddTask from "./AddTask";
-import Projects from "./Projects";
-import ProjectOptions from "./ProjectOptions";
-import AddLabel from "./AddLabel";
-import ToggleDark from "./ToggleDark";
-import Skivio from "../assets/skivio-logo-nobg.png";
+import AddTask from "../Tasks/AddTask.jsx";
+import Projects from "../Projects/Projects.jsx";
+import ProjectOptions from "../Projects/ProjectOptions.jsx";
+import AddLabel from "../Labels/AddLabel.jsx";
+import ToggleDark from "./ToggleDark.jsx";
+import Skivio from "../../assets/skivio-logo-nobg.png";
 
 function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
   return (

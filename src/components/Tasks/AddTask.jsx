@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "../db.js";
+import { db } from "../../db.js";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Listbox } from "@headlessui/react";
 import { Check, ChevronDown, ChevronRight } from "lucide-react";

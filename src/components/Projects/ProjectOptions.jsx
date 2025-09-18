@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "../db.js";
+import { db } from "../../db.js";
 import { Menu, MenuButton, MenuItems, MenuItem, MenuSeparator } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
 import { useLiveQuery } from "dexie-react-hooks";

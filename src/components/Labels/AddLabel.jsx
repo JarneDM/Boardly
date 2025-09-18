@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { db } from "../db.js";
-import AddTask from "./AddTask.jsx";
+import { db } from "../../db.js";
+import AddTask from "../Tasks/AddTask.jsx";
 import ManageLabels from "./ManageLabels.jsx";
 import { Menu, MenuButton, MenuItems, MenuItem, MenuSeparator } from "@headlessui/react";
 import { ChevronDown, Tags } from "lucide-react";

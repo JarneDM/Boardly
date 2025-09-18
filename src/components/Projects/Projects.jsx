@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "../db.js";
+import { db } from "../../db.js";
 import { Listbox } from "@headlessui/react";
 import { Check, ChevronDown } from "lucide-react";
-import TaskCards from "./TaskCards.jsx";
+import TaskCards from "../Tasks/TaskCards.jsx";
 
 function Projects({ selectedProject, setSelectedProject }) {
   const projects = useLiveQuery(() => db.projects.toArray(), []);

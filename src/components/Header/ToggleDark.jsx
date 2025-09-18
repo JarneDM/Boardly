@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-import toggle from "../assets/toggle.png";
+import toggle from "../../assets/toggle.png";
 
 function ToggleDark() {
   // const [dark, setDark] = useState(() => localStorage.getItem("theme") === "dark");

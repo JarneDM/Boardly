@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "../db.js";
+import { db } from "../../db.js";
 import { Trash } from "lucide-react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Listbox } from "@headlessui/react";

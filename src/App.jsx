@@ -1,6 +1,6 @@
 import "./App.css";
-import Board from "./components/Board";
-import Nav from "./components/Nav";
+import Board from "./components/Status/Board.jsx";
+import Nav from "./components/Header/Nav.jsx";
 import { useEffect, useState } from "react";
 
 function App() {
