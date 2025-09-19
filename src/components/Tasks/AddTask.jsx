@@ -48,7 +48,9 @@ function AddTask({ statusClasses, dueDate, setDueDate }) {
     <>
       <button
         onClick={() => setShowOverlay(true)}
-        className={`cursor-pointer w-full mt-4 p-1 ${statusClasses} dark:bg-blue-900 dark:text-white shadow-md border-[1px] border-blue-600 text-blue-800 rounded-md hover:bg-white hover:text-blue-700 hover:p-0.5 hover:text-lg transition-colors`}
+        className={`cursor-pointer w-full mt-4 p-1 ${statusClasses} dark:bg-blue-900 dark:text-white shadow-md border-[1px] border-blue-600 text-blue-800 rounded-md hover:bg-white hover:text-blue-700 hover:p-0.5 hover:text-lg transition-colors ${
+          window.location.pathname === "/calendar" && "mt-[0rem] bg-white"
+        }`}
       >
         +
       </button>

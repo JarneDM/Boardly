@@ -9,14 +9,14 @@ import Skivio from "../../assets/skivio-logo-nobg.png";
 function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
   return (
     <>
-      <div className="w-full flex items-center justify-between p-4 bg-blue-600">
+      <div className="w-full flex items-center justify-between p-3 bg-blue-600">
         <div className="flex items-center space-x-4">
           {/* <h1 className="text-white font-bold text-2xl mr-5">Skivio</h1> */}
           <img className="h-10" src={Skivio} alt="Skivio logo" />
           <Projects selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
           <ProjectOptions selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
         </div>
-        <div className="w-full max-w-md flex items-center">
+        <div className="w-full max-w-sm flex items-center">
           <input
             className="text-white w-full border-1 p-2 rounded-xl"
             value={search}
@@ -26,7 +26,8 @@ function Nav({ selectedProject, setSelectedProject, search, setSearch }) {
           />
         </div>
 
-        <div className="flex items-center space-x-5">
+        <div className="flex items-center space-x-5 min-w-[10rem]">
+          {window.location.pathname === "/calendar" && <AddTask />}
           <AddLabel />
           <ToggleDark />
         </div>
