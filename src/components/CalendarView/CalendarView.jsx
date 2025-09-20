@@ -24,15 +24,9 @@ function CalendarView() {
       },
     }));
   return (
-    <div className="flex justify-center items-center p-3">
-      <div className="w-[80%]">
-        <FullCalendar
-          plugins={[dayGridPlugin]}
-          initialView="dayGridMonth"
-          events={events}
-          height="auto"
-          eventContent={renderEventContent}
-        />
+    <div className="flex justify-center items-start h-screen dark:bg-[#111827] p-10 dark:text-blue-500/50 transition-colors overflow-hidden">
+      <div className="w-[80%] h-full">
+        <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" events={events} height="80%" eventContent={renderEventContent} />
       </div>
     </div>
   );
